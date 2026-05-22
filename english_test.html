@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Pioneers | English Test Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;900&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07101f;
+  --bg2: #0d1b2e;
+  --bg3: #112240;
+  --card: rgba(17,34,64,0.85);
+  --teal: #00d4c2;
+  --teal2: #00b4a2;
+  --gold: #ffc947;
+  --coral: #ff7b6b;
+  --blue: #4a9eff;
+  --white: #e8f4fd;
+  --muted: #8bafc7;
+  --border: rgba(0,212,194,0.15);
+  --success: #3dd68c;
+  --error: #ff6b6b;
+  --warn: #ffc947;
+  --shadow: 0 8px 40px rgba(0,0,0,0.6);
+  --radius: 16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Raleway',sans-serif;background:var(--bg);color:var(--white);min-height:100vh;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--teal2);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,16,31,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.15rem;color:var(--teal);letter-spacing:1px}
+.nav-logo span{color:var(--gold)}
+.nav-logo .icon{font-size:1.4rem}
+.nav-links{display:flex;gap:4px}
+.nav-btn{background:none;border:none;color:var(--muted);font-family:'Raleway',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;padding:8px 14px;border-radius:8px;transition:all .25s;text-transform:uppercase;letter-spacing:.5px}
+.nav-btn:hover,.nav-btn.active{color:var(--teal);background:rgba(0,212,194,0.1)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--muted);border-radius:2px;transition:.25s}
+
+/* SECTIONS */
+section{min-height:100vh;padding:80px 20px 40px}
+.section-hidden{display:none!important}
+
+/* HERO */
+#home{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 40%, rgba(0,212,194,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 60%, rgba(74,158,255,0.07) 0%, transparent 60%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,194,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,194,0.04) 1px,transparent 1px);background-size:40px 40px}
+.hero-content{position:relative;text-align:center;max-width:800px;animation:fadeUp .8s ease}
+.hero-badge{display:inline-block;padding:6px 18px;border:1px solid var(--teal);border-radius:50px;color:var(--teal);font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.hero-title{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:20px}
+.hero-title .line1{color:var(--white)}
+.hero-title .line2{background:linear-gradient(135deg,var(--teal),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--muted);font-size:1.1rem;font-weight:300;max-width:560px;margin:0 auto 40px;line-height:1.7}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-bottom:48px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:900;color:var(--gold);line-height:1}
+.stat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:14px 32px;background:linear-gradient(135deg,var(--teal),var(--blue));border:none;border-radius:50px;color:var(--bg);font-family:'Raleway',sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(0,212,194,0.3);letter-spacing:.5px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,194,0.4)}
+.btn-outline{padding:14px 32px;background:transparent;border:2px solid var(--teal);border-radius:50px;color:var(--teal);font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .3s;letter-spacing:.5px}
+.btn-outline:hover{background:rgba(0,212,194,0.1);transform:translateY(-2px)}
+.btn-gold{padding:14px 32px;background:linear-gradient(135deg,var(--gold),#ff9d00);border:none;border-radius:50px;color:var(--bg);font-family:'Raleway',sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(255,201,71,0.3);letter-spacing:.5px}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,201,71,0.4)}
+.btn-sm{padding:10px 22px;font-size:.85rem}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Raleway',sans-serif;font-size:.85rem;cursor:pointer;padding:8px 18px;border-radius:8px;transition:.2s}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;backdrop-filter:blur(10px)}
+
+/* TEST SECTION */
+#test{padding-top:80px}
+.test-header{max-width:900px;margin:0 auto 28px}
+.test-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.test-page-info{color:var(--muted);font-size:.9rem;font-weight:600}
+.test-page-info span{color:var(--teal);font-weight:800}
+.test-timer{display:flex;align-items:center;gap:8px;color:var(--gold);font-weight:700;font-size:1rem}
+.progress-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:3px;transition:width .4s ease}
+
+.questions-grid{max-width:900px;margin:0 auto;display:grid;gap:20px}
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:border-color .2s}
+.q-card.answered{border-color:rgba(0,212,194,0.3)}
+.q-num{font-size:.75rem;font-weight:800;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.q-text{font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:20px;line-height:1.6}
+.q-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.q-option{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;user-select:none}
+.q-option:hover{border-color:var(--teal);background:rgba(0,212,194,0.06)}
+.q-option.selected{border-color:var(--teal);background:rgba(0,212,194,0.1);color:var(--teal)}
+.q-option input[type=radio]{accent-color:var(--teal);width:16px;height:16px;cursor:pointer;flex-shrink:0}
+.q-option label{cursor:pointer;font-size:.95rem;font-weight:500;flex:1}
+.opt-letter{width:24px;height:24px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:var(--muted);flex-shrink:0}
+.q-option.selected .opt-letter{background:var(--teal);color:var(--bg)}
+
+.test-nav{max-width:900px;margin:28px auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.answered-count{color:var(--muted);font-size:.9rem}
+.answered-count strong{color:var(--white)}
+
+/* RESULTS */
+#results{padding-top:90px}
+.results-wrap{max-width:900px;margin:0 auto}
+.score-hero{text-align:center;margin-bottom:40px}
+.score-ring{position:relative;width:180px;height:180px;margin:0 auto 24px}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring-bg{fill:none;stroke:var(--bg3);stroke-width:12}
+.score-ring-fill{fill:none;stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1s ease}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-pct{font-size:2.4rem;font-weight:900}
+.score-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.grade-badge{display:inline-block;padding:8px 28px;border-radius:50px;font-weight:800;font-size:1.1rem;margin-bottom:12px}
+.grade-A{background:rgba(61,214,140,0.2);border:2px solid var(--success);color:var(--success)}
+.grade-B{background:rgba(74,158,255,0.2);border:2px solid var(--blue);color:var(--blue)}
+.grade-C{background:rgba(255,201,71,0.2);border:2px solid var(--gold);color:var(--gold)}
+.grade-D{background:rgba(255,107,107,0.2);border:2px solid var(--error);color:var(--error)}
+.score-msg{color:var(--muted);font-size:1rem;font-weight:300;margin-top:8px}
+
+.results-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:40px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.cat-title{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.cat-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.cat-fill{height:100%;border-radius:3px;transition:width 1s ease}
+.cat-score{font-size:.85rem;font-weight:700}
+
+.wrong-list{display:grid;gap:16px}
+.wrong-item{background:var(--card);border:1px solid rgba(255,107,107,0.2);border-radius:12px;padding:20px}
+.wrong-qnum{font-size:.7rem;font-weight:800;color:var(--coral);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.wrong-qtext{font-size:.98rem;font-weight:600;margin-bottom:14px;line-height:1.5}
+.wrong-answers{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.ans-tag{padding:6px 14px;border-radius:8px;font-size:.83rem;font-weight:600;display:flex;align-items:center;gap:6px}
+.ans-wrong{background:rgba(255,107,107,0.15);border:1px solid var(--error);color:var(--error)}
+.ans-correct{background:rgba(61,214,140,0.15);border:1px solid var(--success);color:var(--success)}
+.wrong-explain{background:rgba(0,212,194,0.05);border-left:3px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.88rem;color:var(--muted);line-height:1.6}
+.wrong-explain strong{color:var(--teal)}
+
+.results-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+
+/* GRAMMAR GUIDE */
+#grammar{padding-top:90px}
+.grammar-wrap{max-width:1100px;margin:0 auto}
+.section-title{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:8px}
+.section-title .accent{color:var(--teal)}
+.section-sub{color:var(--muted);margin-bottom:36px;font-weight:300;font-size:1rem}
+.grammar-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.gtab{background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Raleway',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;padding:9px 18px;border-radius:50px;transition:all .2s;letter-spacing:.5px;text-transform:uppercase}
+.gtab:hover{border-color:var(--teal);color:var(--teal)}
+.gtab.active{background:var(--teal);border-color:var(--teal);color:var(--bg)}
+.grammar-panel{display:none;animation:fadeUp .4s ease}
+.grammar-panel.active{display:block}
+.gp-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+.gp-icon{font-size:3rem;line-height:1}
+.gp-meta h2{font-size:1.6rem;font-weight:900;margin-bottom:6px}
+.gp-meta p{color:var(--muted);font-size:.95rem;font-weight:300;line-height:1.6;max-width:600px}
+.gp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
+.gp-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.gp-box h3{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px}
+.rule-list{list-style:none;display:grid;gap:10px}
+.rule-list li{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;line-height:1.5;color:var(--muted)}
+.rule-list li::before{content:'▸';color:var(--teal);flex-shrink:0;margin-top:1px}
+.ex-list{display:grid;gap:10px}
+.ex-item{background:var(--bg3);border-radius:8px;padding:12px 14px}
+.ex-sentence{font-size:.9rem;margin-bottom:4px;font-weight:600}
+.ex-sentence .blank{color:var(--gold);font-style:italic}
+.ex-note{font-size:.78rem;color:var(--muted)}
+.mistake-list{list-style:none;display:grid;gap:10px}
+.mistake-list li{background:var(--bg3);border-radius:8px;padding:12px 14px;font-size:.88rem}
+.mistake-list .wrong-ex{color:var(--error);text-decoration:line-through;margin-bottom:3px}
+.mistake-list .right-ex{color:var(--success)}
+.formula-box{background:rgba(0,212,194,0.06);border:1px solid rgba(0,212,194,0.3);border-radius:10px;padding:16px;margin-bottom:16px;text-align:center}
+.formula{font-family:'Merriweather',serif;font-size:1.05rem;color:var(--teal);font-style:italic;line-height:1.7}
+.tense-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.tense-table th{background:var(--bg3);color:var(--teal);padding:10px 14px;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.8px}
+.tense-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--muted)}
+.tense-table tr:last-child td{border-bottom:none}
+.tense-table .example{color:var(--white);font-weight:600}
+
+/* PRACTICE */
+#practice{padding-top:90px}
+.practice-wrap{max-width:800px;margin:0 auto}
+.topic-selector{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:28px}
+.topic-card{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;text-align:center}
+.topic-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.topic-card.selected{border-color:var(--teal);background:rgba(0,212,194,0.1)}
+.topic-card .t-icon{font-size:1.8rem;margin-bottom:8px}
+.topic-card .t-name{font-size:.8rem;font-weight:700;color:var(--muted)}
+.topic-card.selected .t-name{color:var(--teal)}
+.ai-controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+.ai-note{font-size:.82rem;color:var(--muted);margin-top:8px}
+.api-key-wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.api-input{flex:1;min-width:200px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--white);font-family:'Raleway',sans-serif;font-size:.88rem;outline:none;transition:.2s}
+.api-input:focus{border-color:var(--teal)}
+.api-input::placeholder{color:var(--muted)}
+.loading-dots{display:flex;gap:6px;align-items:center;justify-content:center;padding:40px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:bounce .8s infinite}
+.dot:nth-child(2){animation-delay:.15s}
+.dot:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.practice-results{text-align:center;padding:30px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);margin-top:24px}
+.p-score{font-size:2.5rem;font-weight:900;color:var(--teal);margin-bottom:8px}
+.p-label{color:var(--muted);font-size:.9rem}
+
+/* REVIEW */
+.review-item{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:10px}
+.review-q{font-size:.92rem;font-weight:600;margin-bottom:8px}
+.review-opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.r-opt{padding:5px 12px;border-radius:6px;font-size:.8rem;font-weight:600}
+.r-correct{background:rgba(61,214,140,0.15);color:var(--success)}
+.r-wrong{background:rgba(255,107,107,0.15);color:var(--error)}
+.r-selected-wrong{background:rgba(255,107,107,0.25);color:var(--error);border:1px solid var(--error)}
+.review-exp{font-size:.82rem;color:var(--muted);margin-top:6px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;top:-10px;width:10px;height:10px;pointer-events:none;animation:confettiFall linear forwards;z-index:9999}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.fade-in{animation:fadeIn .4s ease}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--bg3);border:1px solid var(--teal);border-radius:50px;padding:12px 28px;font-weight:600;font-size:.9rem;color:var(--teal);z-index:9999;transition:transform .35s ease;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .q-options{grid-template-columns:1fr}
+  .gp-grid{grid-template-columns:1fr}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(7,16,31,0.98);border-bottom:1px solid var(--border);flex-direction:column;padding:12px;gap:4px}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .hero-stats{gap:24px}
+  .stat-num{font-size:1.5rem}
+  .topic-selector{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+}
+@media(max-width:480px){
+  .hero-title{font-size:1.9rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-outline,.btn-gold{width:100%;max-width:280px}
+}
+
+/* SECTION TRANSITIONS */
+section{animation:fadeIn .4s ease}
+
+/* HIGHLIGHT */
+mark{background:rgba(255,201,71,0.2);color:var(--gold);border-radius:3px;padding:0 4px}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">
+    <span class="icon">🎓</span>
+    <span>Digital <span>Pioneers</span></span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <button class="nav-btn active" onclick="showSection('home')">Home</button>
+    <button class="nav-btn" onclick="showSection('test')">📝 Full Test</button>
+    <button class="nav-btn" onclick="showSection('grammar')">📖 Grammar</button>
+    <button class="nav-btn" onclick="showSection('practice')">⚡ Practice</button>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════ HOME ═══════════════ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🚀 مبادرة الرواد الرقميون</div>
+    <h1 class="hero-title">
+      <div class="line1">Master English</div>
+      <div class="line2">Grammar & Tenses</div>
+    </h1>
+    <p class="hero-sub">اختبر نفسك على 100 سؤال حقيقي من اختبار اللغة الإنجليزية، وتعلم القواعد والأزمنة مع شرح تفصيلي لكل إجابة</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">100</div><div class="stat-label">Real Questions</div></div>
+      <div class="stat"><div class="stat-num">16+</div><div class="stat-label">Grammar Topics</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Practice Bonus</div></div>
+      <div class="stat"><div class="stat-num">AI</div><div class="stat-label">Powered Tips</div></div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="startTest('full')">📝 Start Full Test (100 Q)</button>
+      <button class="btn-gold" onclick="startTest('quick')">⚡ Quick Quiz (20 Q)</button>
+      <button class="btn-outline" onclick="showSection('grammar')">📖 Grammar Guide</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TEST ═══════════════ -->
+<section id="test" class="section-hidden">
+  <div class="test-header">
+    <div class="test-meta">
+      <div class="test-page-info">Page <span id="pageNum">1</span> of <span id="pageTotal">10</span> &nbsp;|&nbsp; Questions <span id="pageRange">1–10</span></div>
+      <div class="test-timer" id="timerDisplay">⏱ <span id="timerVal">00:00</span></div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+  <div class="questions-grid" id="questionsContainer"></div>
+  <div class="test-nav">
+    <button class="btn-ghost" id="prevBtn" onclick="changePage(-1)" style="visibility:hidden">← Previous</button>
+    <div class="answered-count">Answered: <strong id="answeredCount">0</strong> / <strong id="totalShown">10</strong></div>
+    <button class="btn-primary" id="nextBtn" onclick="changePage(1)">Next →</button>
+  </div>
+</section>
+
+<!-- ═══════════════ RESULTS ═══════════════ -->
+<section id="results" class="section-hidden">
+  <div class="results-wrap">
+    <div class="score-hero">
+      <div class="score-ring">
+        <svg viewBox="0 0 180 180" width="180" height="180">
+          <circle class="score-ring-bg" cx="90" cy="90" r="74"/>
+          <circle class="score-ring-fill" id="scoreRingFill" cx="90" cy="90" r="74" stroke-dasharray="465" stroke-dashoffset="465"/>
+        </svg>
+        <div class="score-num">
+          <div class="score-pct" id="scorePct" style="color:var(--teal)">0%</div>
+          <div class="score-label">Score</div>
+        </div>
+      </div>
+      <div class="grade-badge" id="gradeBadge">—</div>
+      <div style="font-size:1.3rem;font-weight:700;margin-bottom:4px" id="scoreRaw"></div>
+      <div class="score-msg" id="scoreMsg"></div>
+    </div>
+    <div class="card" style="margin-bottom:28px">
+      <h3 style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px">📊 Performance by Category</h3>
+      <div class="results-cats" id="catResults"></div>
+    </div>
+    <div id="wrongSection" style="display:none">
+      <h3 style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--coral);margin-bottom:16px">❌ Review Incorrect Answers</h3>
+      <div class="wrong-list" id="wrongList"></div>
+    </div>
+    <div class="results-actions">
+      <button class="btn-primary" onclick="startTest(currentTestMode)">🔄 Retry Same Test</button>
+      <button class="btn-gold" onclick="startTest('wrong')">❌ Practice Wrong Only</button>
+      <button class="btn-outline" onclick="showSection('grammar')">📖 Study Grammar</button>
+      <button class="btn-ghost" onclick="showSection('home')">🏠 Home</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GRAMMAR GUIDE ═══════════════ -->
+<section id="grammar" class="section-hidden">
+  <div class="grammar-wrap">
+    <h1 class="section-title"><span class="accent">Grammar</span> Guide</h1>
+    <p class="section-sub">دليل شامل لجميع القواعد والأزمنة المستخدمة في الاختبار مع أمثلة ونصائح</p>
+    <div class="grammar-tabs" id="grammarTabs">
+      <button class="gtab active" onclick="showGrammarTab('tenses')">Verb Tenses</button>
+      <button class="gtab" onclick="showGrammarTab('quantifiers')">Quantifiers</button>
+      <button class="gtab" onclick="showGrammarTab('comparatives')">Comparatives</button>
+      <button class="gtab" onclick="showGrammarTab('prepositions')">Prepositions</button>
+      <button class="gtab" onclick="showGrammarTab('modals')">Modal Verbs</button>
+      <button class="gtab" onclick="showGrammarTab('structures')">Special Structures</button>
+    </div>
+
+    <!-- TENSES PANEL -->
+    <div class="grammar-panel active" id="panel-tenses">
+      <div class="gp-header">
+        <div class="gp-icon">⏰</div>
+        <div class="gp-meta">
+          <h2>Verb Tenses — الأزمنة</h2>
+          <p>الأزمنة هي قلب اللغة الإنجليزية. فهم متى تستخدم كل زمن هو مفتاح النجاح في الاختبار.</p>
+        </div>
+      </div>
+      <table class="tense-table" style="margin-bottom:24px">
+        <thead><tr><th>Tense</th><th>Formula</th><th>Key Signal Words</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Present Simple</strong></td><td>S + V(s/es)</td><td>every day, always, usually, never</td><td class="example">She drives to work every day.</td></tr>
+          <tr><td><strong>Past Simple</strong></td><td>S + V-ed / irregular</td><td>yesterday, last night, ago, in 2020</td><td class="example">They were at the cinema last night.</td></tr>
+          <tr><td><strong>Present Continuous</strong></td><td>S + am/is/are + V-ing</td><td>now, at the moment, currently</td><td class="example">He is studying for the exam.</td></tr>
+          <tr><td><strong>Past Continuous</strong></td><td>S + was/were + V-ing</td><td>when, while, at 5 o'clock yesterday</td><td class="example">They were having lunch when the phone rang.</td></tr>
+          <tr><td><strong>Present Perfect</strong></td><td>S + have/has + V3</td><td>already, yet, never, ever, just, since, for</td><td class="example">I have never seen such a sunset.</td></tr>
+          <tr><td><strong>Past Perfect</strong></td><td>S + had + V3</td><td>before, by the time, after, already</td><td class="example">They had finished before the deadline.</td></tr>
+          <tr><td><strong>Present Perfect Cont.</strong></td><td>S + have/has been + V-ing</td><td>for, since + period of time (still ongoing)</td><td class="example">We have been studying for two years.</td></tr>
+          <tr><td><strong>Future (going to)</strong></td><td>S + am/is/are going to + V</td><td>tomorrow, next week, plans</td><td class="example">They are going to the zoo tomorrow.</td></tr>
+        </tbody>
+      </table>
+      <div class="gp-grid">
+        <div class="gp-box">
+          <h3>⚠️ Common Mistakes</h3>
+          <ul class="mistake-list">
+            <li><div class="wrong-ex">She go to school every day.</div><div class="right-ex">✓ She goes to school every day. (he/she/it + s)</div></li>
+            <li><div class="wrong-ex">I seen the movie already.</div><div class="right-ex">✓ I have seen the movie. (need have/has)</div></li>
+            <li><div class="wrong-ex">They was playing football.</div><div class="right-ex">✓ They were playing football. (plural → were)</div></li>
+            <li><div class="wrong-ex">She has went to Cairo.</div><div class="right-ex">✓ She has gone to Cairo. (V3 not V2)</div></li>
+            <li><div class="wrong-ex">I will call when I will get home.</div><div class="right-ex">✓ I will call when I get home. (present after when)</div></li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>💡 Quick Rules</h3>
+          <ul class="rule-list">
+            <li>He / She / It → always add <mark>s</mark> or <mark>es</mark> in Present Simple</li>
+            <li>Use <mark>was</mark> for I/He/She/It, <mark>were</mark> for You/We/They in Past</li>
+            <li>Present Perfect uses <mark>have</mark> (I/you/we/they) or <mark>has</mark> (he/she/it)</li>
+            <li>Past Continuous: action was in progress when another happened</li>
+            <li>Use <mark>for</mark> with a duration, <mark>since</mark> with a start time</li>
+            <li>In time clauses (when/if), use Present Simple — not Future</li>
+            <li>Past Perfect = action done BEFORE another past action</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUANTIFIERS PANEL -->
+    <div class="grammar-panel" id="panel-quantifiers">
+      <div class="gp-header">
+        <div class="gp-icon">🔢</div>
+        <div class="gp-meta">
+          <h2>Quantifiers — الكميات</h2>
+          <p>Much / Many / Some / Any / A lot of — كل واحدة لها استخدام محدد حسب نوع الاسم والجملة.</p>
+        </div>
+      </div>
+      <table class="tense-table" style="margin-bottom:24px">
+        <thead><tr><th>Quantifier</th><th>Use with</th><th>Sentence Type</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>MUCH</strong></td><td>Uncountable nouns</td><td>❌ Negative / ❓ Question</td><td class="example">We don't have much milk. / How much sugar?</td></tr>
+          <tr><td><strong>MANY</strong></td><td>Countable plural nouns</td><td>❌ Negative / ❓ Question</td><td class="example">I don't know many people. / How many books?</td></tr>
+          <tr><td><strong>SOME</strong></td><td>Both types</td><td>✅ Positive / Offers</td><td class="example">There are some apples. / Would you like some?</td></tr>
+          <tr><td><strong>ANY</strong></td><td>Both types</td><td>❌ Negative / ❓ Question</td><td class="example">We don't have any milk. / Do you have any books?</td></tr>
+          <tr><td><strong>A LOT OF</strong></td><td>Both types</td><td>✅ Positive</td><td class="example">I have a lot of friends.</td></tr>
+        </tbody>
+      </table>
+      <div class="gp-grid">
+        <div class="gp-box">
+          <h3>🔵 Countable vs Uncountable</h3>
+          <ul class="rule-list">
+            <li><strong>Countable</strong> (عدّ) = books, friends, apples, people — يُجمع ✓</li>
+            <li><strong>Uncountable</strong> (لا يُعدّ) = milk, water, money, sugar, time</li>
+            <li>Use <mark>MUCH</mark> only with uncountable: much water ✓ / much books ✗</li>
+            <li>Use <mark>MANY</mark> only with countable: many books ✓ / many water ✗</li>
+            <li><mark>SOME</mark> in positive sentences, <mark>ANY</mark> in negatives/questions</li>
+            <li>Exception: Use <mark>SOME</mark> in questions when offering or requesting politely</li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>⚠️ Common Mistakes</h3>
+          <ul class="mistake-list">
+            <li><div class="wrong-ex">I don't have many money.</div><div class="right-ex">✓ I don't have much money. (uncountable)</div></li>
+            <li><div class="wrong-ex">There are much apples.</div><div class="right-ex">✓ There are many apples. (countable)</div></li>
+            <li><div class="wrong-ex">I have some friends? (asking)</div><div class="right-ex">✓ Do you have any friends? (question → any)</div></li>
+            <li><div class="wrong-ex">There aren't some seats.</div><div class="right-ex">✓ There aren't any seats. (negative → any)</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARATIVES PANEL -->
+    <div class="grammar-panel" id="panel-comparatives">
+      <div class="gp-header">
+        <div class="gp-icon">📈</div>
+        <div class="gp-meta">
+          <h2>Comparatives & Superlatives — المقارنة</h2>
+          <p>نستخدمها للمقارنة بين شخصين أو شيئين (comparative) أو ضمن مجموعة كاملة (superlative).</p>
+        </div>
+      </div>
+      <table class="tense-table" style="margin-bottom:24px">
+        <thead><tr><th>Adjective Type</th><th>Comparative</th><th>Superlative</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Short (1 syllable)<br><small>tall, long, fast, old</small></td><td>+ <strong>er</strong> + than</td><td>the + <strong>est</strong></td><td class="example">taller than / the tallest</td></tr>
+          <tr><td>Ends in -y<br><small>easy, heavy, busy</small></td><td>change y→i + <strong>er</strong></td><td>change y→i + <strong>est</strong></td><td class="example">easier / the easiest</td></tr>
+          <tr><td>Long (2+ syllables)<br><small>interesting, difficult, boring</small></td><td><strong>more</strong> + adj + than</td><td>the <strong>most</strong> + adj</td><td class="example">more interesting / the most interesting</td></tr>
+          <tr><td>Irregular<br><small>good, bad, far</small></td><td>better / worse / farther</td><td>the best / the worst / the farthest</td><td class="example">She is the best student.</td></tr>
+        </tbody>
+      </table>
+      <div class="gp-grid">
+        <div class="gp-box">
+          <h3>💡 Key Rules</h3>
+          <ul class="rule-list">
+            <li>Always use <mark>than</mark> after comparative: taller <mark>than</mark> her sister ✓</li>
+            <li>Never: more taller ✗ / more faster ✗ (double comparative!)</li>
+            <li>Superlative always needs <mark>the</mark>: the longest river ✓</li>
+            <li>good → better → the best (irregular!)</li>
+            <li>For adverbs: fast → faster, well → better</li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>⚠️ Common Mistakes</h3>
+          <ul class="mistake-list">
+            <li><div class="wrong-ex">She is more taller than me.</div><div class="right-ex">✓ She is taller than me.</div></li>
+            <li><div class="wrong-ex">He is the more good student.</div><div class="right-ex">✓ He is the best student.</div></li>
+            <li><div class="wrong-ex">The Nile is most long river.</div><div class="right-ex">✓ The Nile is the longest river.</div></li>
+            <li><div class="wrong-ex">She is taller then her sister.</div><div class="right-ex">✓ She is taller than her sister. (than ≠ then)</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREPOSITIONS PANEL -->
+    <div class="grammar-panel" id="panel-prepositions">
+      <div class="gp-header">
+        <div class="gp-icon">📍</div>
+        <div class="gp-meta">
+          <h2>Prepositions — حروف الجر</h2>
+          <p>حروف الجر المكانية والزمانية — أكثر نقاط الاختبار التي يخطئ فيها الطلاب.</p>
+        </div>
+      </div>
+      <div class="gp-grid">
+        <div class="gp-box">
+          <h3>🕐 Time Prepositions</h3>
+          <ul class="rule-list">
+            <li><mark>IN</mark> = months, years, seasons, parts of day: in January / in 2002 / in the morning</li>
+            <li><mark>ON</mark> = specific days & dates: on Monday / on 5th May</li>
+            <li><mark>AT</mark> = exact times & holidays: at 5 o'clock / at Christmas</li>
+            <li><mark>FOR</mark> = duration (how long?): for two weeks / for five years</li>
+            <li><mark>SINCE</mark> = start point (from when?): since Monday / since 2015</li>
+            <li><mark>DURING</mark> = period when something happens: during the holiday</li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>📌 Place Prepositions</h3>
+          <ul class="rule-list">
+            <li><mark>IN</mark> = enclosed spaces, cities, countries: in the park / in Cairo</li>
+            <li><mark>ON</mark> = surfaces: on the table / on the envelope</li>
+            <li><mark>AT</mark> = specific points/locations: at the airport / at school</li>
+            <li><mark>NEAR</mark> = close to: my house is near the bank</li>
+            <li><mark>OVER</mark> = above/across: the plane flew over the city</li>
+            <li><mark>UNDER</mark> = below: the cat is under the table</li>
+            <li><mark>BY</mark> = transport method: by car / by train / by bus</li>
+          </ul>
+        </div>
+      </div>
+      <table class="tense-table" style="margin-top:20px">
+        <thead><tr><th>Common Phrase</th><th>Preposition</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>___ the morning/evening/night</td><td><strong>in</strong></td><td>Parts of day → in</td></tr>
+          <tr><td>arrive ___ the airport</td><td><strong>at</strong></td><td>Specific location → at</td></tr>
+          <tr><td>born ___ January / ___ 1995</td><td><strong>in</strong></td><td>Month / Year → in</td></tr>
+          <tr><td>stamp ___ the envelope</td><td><strong>on</strong></td><td>Surface → on</td></tr>
+          <tr><td>go ___ car/bus/train</td><td><strong>by</strong></td><td>Transport → by</td></tr>
+          <tr><td>met ___ the park</td><td><strong>in</strong></td><td>Enclosed outdoor area → in</td></tr>
+          <tr><td>lived here ___ 5 years</td><td><strong>for</strong></td><td>Duration → for</td></tr>
+          <tr><td>haven't seen ___ Monday</td><td><strong>since</strong></td><td>Start point → since</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MODALS PANEL -->
+    <div class="grammar-panel" id="panel-modals">
+      <div class="gp-header">
+        <div class="gp-icon">🎛️</div>
+        <div class="gp-meta">
+          <h2>Modal Verbs — أفعال الحالة</h2>
+          <p>CAN / WOULD / COULD / MUST / SHOULD — أفعال مساعدة تعبر عن القدرة، الإذن، الطلب، والنصيحة.</p>
+        </div>
+      </div>
+      <table class="tense-table" style="margin-bottom:24px">
+        <thead><tr><th>Modal</th><th>Main Uses</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>CAN</strong></td><td>Ability / Permission</td><td class="example">He can speak three languages. / You can go home now.</td></tr>
+          <tr><td><strong>COULD</strong></td><td>Past ability / Polite request</td><td class="example">Could you help me, please?</td></tr>
+          <tr><td><strong>WOULD</strong></td><td>Polite offers / requests, conditional</td><td class="example">Would you like some tea? / Would she like to go?</td></tr>
+          <tr><td><strong>MUST</strong></td><td>Obligation / Strong necessity</td><td class="example">You must remember to put a stamp on it.</td></tr>
+          <tr><td><strong>SHOULD</strong></td><td>Advice / Recommendation</td><td class="example">You should study harder.</td></tr>
+        </tbody>
+      </table>
+      <div class="gp-grid">
+        <div class="gp-box">
+          <h3>💡 Key Rules</h3>
+          <ul class="rule-list">
+            <li>Modal verbs are ALWAYS followed by the base verb (infinitive without 'to')</li>
+            <li>He can <mark>speak</mark> ✓ (not speaks, not to speak)</li>
+            <li>No -s with he/she/it: He can ✓ / He cans ✗</li>
+            <li><mark>Would you like</mark> = polite way to offer or invite</li>
+            <li><mark>Would like</mark> = formal version of "want": I would like some tea</li>
+            <li>Can go ✓ / Can going ✗ / Can goes ✗</li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>⚠️ Common Mistakes</h3>
+          <ul class="mistake-list">
+            <li><div class="wrong-ex">You can going home now.</div><div class="right-ex">✓ You can go home now.</div></li>
+            <li><div class="wrong-ex">He cans speak English.</div><div class="right-ex">✓ He can speak English. (no -s on modals)</div></li>
+            <li><div class="wrong-ex">Do you like some tea?</div><div class="right-ex">✓ Would you like some tea? (polite offer)</div></li>
+            <li><div class="wrong-ex">Would she likes to go?</div><div class="right-ex">✓ Would she like to go? (base verb after modal)</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECIAL STRUCTURES PANEL -->
+    <div class="grammar-panel" id="panel-structures">
+      <div class="gp-header">
+        <div class="gp-icon">🏗️</div>
+        <div class="gp-meta">
+          <h2>Special Structures — تراكيب خاصة</h2>
+          <p>SO / SUCH / ENOUGH / Tag Questions / Conjunctions — تراكيب لغوية متكررة في الاختبار.</p>
+        </div>
+      </div>
+      <div class="gp-grid">
+        <div class="gp-box">
+          <h3>SO vs SUCH</h3>
+          <ul class="rule-list">
+            <li><mark>SO + adjective</mark>: The movie was <mark>so</mark> boring.</li>
+            <li><mark>SUCH A + adj + noun</mark>: It was <mark>such a</mark> warm day.</li>
+            <li>SO...THAT: It was <mark>so</mark> warm <mark>that</mark> we went swimming.</li>
+            <li>SUCH A...THAT: It was <mark>such a</mark> warm day <mark>that</mark> we went swimming.</li>
+            <li>No article with SUCH + plural: such beautiful places ✓</li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>ENOUGH Structure</h3>
+          <ul class="rule-list">
+            <li>Adjective + <mark>enough</mark>: brave enough / tall enough</li>
+            <li>NOT adjective + enough → not brave enough (إذا قبلها not)</li>
+            <li>Enough + noun: enough time / enough money</li>
+            <li>Enough comes AFTER adjectives but BEFORE nouns</li>
+            <li>Too + adjective (negative meaning): too tired to work</li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>Tag Questions</h3>
+          <ul class="rule-list">
+            <li>Positive sentence + negative tag: She is tall, <mark>isn't she?</mark></li>
+            <li>Negative sentence + positive tag: He isn't here, <mark>is he?</mark></li>
+            <li>Let's go... → <mark>shall we?</mark></li>
+            <li>Imperative → <mark>will you?</mark> / <mark>won't you?</mark></li>
+          </ul>
+        </div>
+        <div class="gp-box">
+          <h3>Conjunctions — روابط الجمل</h3>
+          <ul class="rule-list">
+            <li><mark>AND</mark> = addition: I like coffee and tea.</li>
+            <li><mark>BUT</mark> = contrast: I like coffee but not tea.</li>
+            <li><mark>SO</mark> = result/consequence: She was tired, so she went to bed.</li>
+            <li><mark>BECAUSE</mark> = reason: She went to bed because she was tired.</li>
+            <li><mark>SO</mark> vs <mark>BECAUSE</mark>: She was tired (<strong>because</strong> → reason) / She went to bed (<strong>so</strong> → result)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="gp-box" style="margin-top:0">
+        <h3>🔤 Determiners: THIS / THAT / THESE / THOSE</h3>
+        <table class="tense-table">
+          <thead><tr><th></th><th>Near (قريب)</th><th>Far (بعيد)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Singular</strong></td><td class="example">THIS boy</td><td class="example">THAT girl</td></tr>
+            <tr><td><strong>Plural</strong></td><td class="example">THESE books</td><td class="example">THOSE cars</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AI PRACTICE ═══════════════ -->
+<section id="practice" class="section-hidden">
+  <div class="practice-wrap">
+    <h1 class="section-title"><span class="accent">AI</span> Practice Generator</h1>
+    <p class="section-sub">اختر موضوع القواعد وابدأ تمريناً إضافياً. يمكنك استخدام الأسئلة الجاهزة أو توليد أسئلة جديدة بالذكاء الاصطناعي.</p>
+
+    <div class="card" style="margin-bottom:24px">
+      <h3 style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px">📚 Select Grammar Topic</h3>
+      <div class="topic-selector" id="topicSelector"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:24px">
+      <h3 style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:12px">🤖 AI Question Generator (Optional)</h3>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:14px">Enter your Anthropic API key to generate unlimited new questions with AI. Or use the pre-built questions below for free.</p>
+      <div class="api-key-wrap">
+        <input class="api-input" type="password" id="apiKeyInput" placeholder="sk-ant-... (optional, for AI generation)">
+        <button class="btn-primary btn-sm" onclick="generateAIQuestions()">⚡ Generate with AI</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px">
+      <button class="btn-outline" onclick="startPracticePrebuilt()">📝 Use Pre-built Questions</button>
+    </div>
+
+    <div id="practiceContainer"></div>
+  </div>
+</section>
+
+<script>
+// ═══════════════════════════════════════
+//  DATA: ALL 100 QUESTIONS
+// ═══════════════════════════════════════
+const ALL_QUESTIONS = [
+  {id:1,text:"He ___ late for school.",opts:["is","aren't","were","was"],ans:0,cat:"present-simple",exp:"We use <strong>is</strong> with third person singular (he/she/it) in Present Simple for states/habits."},
+  {id:2,text:"Is my friend Martin ____ boy?",opts:["Those","Thes","Boy","This"],ans:3,cat:"determiners",exp:"<strong>This</strong> = singular + near. 'This boy' is correct. Those/These are plural."},
+  {id:3,text:"Ian is not ____ to watch scary movies.",opts:["braveenough","bravest","brave enough","brave"],ans:2,cat:"structures",exp:"<strong>Adjective + enough</strong> = brave enough. 'Enough' comes AFTER adjectives. Ian is not brave enough = he doesn't have sufficient bravery."},
+  {id:4,text:"You must remember to put a stamp ___ the envelope before you post it.",opts:["on","by","at","under"],ans:0,cat:"prepositions-place",exp:"We put something <strong>on</strong> a surface. A stamp goes ON the envelope (on = touching a surface)."},
+  {id:5,text:"You ___ home now children – it's three o'clock.",opts:["could goes","cannot going","can go","can going"],ans:2,cat:"modals",exp:"Modal verbs (can/could/will/would) are ALWAYS followed by the base verb: <strong>can go</strong>. Never 'can going' or 'can goes'."},
+  {id:6,text:"The plane flew ___ the city of Madrid.",opts:["between","over","under","opposite"],ans:1,cat:"prepositions-place",exp:"<strong>Over</strong> = above and across. A plane flies over a city = above it. 'Under' would be impossible physically!"},
+  {id:7,text:"It was ___ warm day ___ we went swimming.",opts:["such a ... that","such a ... as","so ... as","such ... that"],ans:0,cat:"structures",exp:"<strong>Such a + adjective + noun + that</strong>: 'It was such a warm day that...' Compare: 'It was SO warm THAT we went swimming' (no noun after so)."},
+  {id:8,text:"He ____ very tired yesterday.",opts:["is","are","was","be"],ans:2,cat:"past-simple",exp:"'Yesterday' signals Past Simple. He/she/it + <strong>was</strong> (not were). Was = past of 'is'."},
+  {id:9,text:"They ____ seen the movie already.",opts:["has","have","had","is"],ans:1,cat:"present-perfect",exp:"<strong>They + have</strong> = Present Perfect. 'Already' is a key signal for Present Perfect. They (plural) → have (not has)."},
+  {id:10,text:"We don't have ____ milk left.",opts:["many","much","any","some"],ans:2,cat:"quantifiers",exp:"In <strong>negative</strong> sentences, use <strong>any</strong>. 'Don't have any' = negative + any. (Milk is uncountable, but the key rule here is negative = any.)"},
+  {id:11,text:"This road is ____ than the other one.",opts:["long","more long","longer","longest"],ans:2,cat:"comparatives",exp:"Short adjective (1 syllable) → add <strong>-er</strong>: long → <strong>longer</strong>. Always: shorter adjectives use -er, not 'more'. Don't say 'more long'."},
+  {id:12,text:"She ____ to the market yesterday.",opts:["go","goes","went","going"],ans:2,cat:"past-simple",exp:"'Yesterday' = Past Simple. 'Go' is irregular: go → <strong>went</strong> (past). Not 'goed'!"},
+  {id:13,text:"There isn't ____ sugar in the tea.",opts:["many","some","any","much"],ans:2,cat:"quantifiers",exp:"Negative sentence (isn't) → use <strong>any</strong>. Sugar is uncountable so 'much' could also describe the amount, but with negative + not use 'any'."},
+  {id:14,text:"My house is ____ the bank.",opts:["on","in","to","near"],ans:3,cat:"prepositions-place",exp:"<strong>Near</strong> = close to / in the vicinity of. 'My house is near the bank' = my house and the bank are close together."},
+  {id:15,text:"He ____ studying for the exam.",opts:["is","are","were","be"],ans:0,cat:"present-continuous",exp:"Present Continuous = <strong>am/is/are + V-ing</strong>. He (singular) → <strong>is</strong>. 'He is studying' = action happening now."},
+  {id:16,text:"I have ____ books on my shelf.",opts:["much","many","any","a lot"],ans:1,cat:"quantifiers",exp:"Books are <strong>countable</strong> (you can count them: 1 book, 2 books). With countable plurals in positive sentences → <strong>many</strong>."},
+  {id:17,text:"He is the ____ student in class.",opts:["better","more good","best","most good"],ans:2,cat:"comparatives",exp:"<strong>Superlative of 'good' is 'best'</strong> (irregular). The best = superlative. 'Good → better → the best'. Never 'most good'."},
+  {id:18,text:"We arrived ____ 5 o'clock.",opts:["in","at","on","by"],ans:1,cat:"prepositions-time",exp:"For exact times, use <strong>at</strong>: at 5 o'clock, at noon, at midnight. Rule: AT + time of day."},
+  {id:19,text:"They ____ finished the project before the deadline.",opts:["had","has","were","did"],ans:0,cat:"past-perfect",exp:"<strong>Past Perfect = had + V3</strong>. 'Before the deadline' shows it was completed before another past reference. Had finished = Past Perfect."},
+  {id:20,text:"She ____ playing tennis every weekend.",opts:["enjoy","enjoys","enjoying","enjoyed"],ans:1,cat:"present-simple",exp:"Present Simple with she/he/it → add <strong>-s</strong>: enjoy → <strong>enjoys</strong>. 'Every weekend' is a signal for Present Simple (habit)."},
+  {id:21,text:"We went to the beach ____ car.",opts:["in","by","at","on"],ans:1,cat:"prepositions-place",exp:"For transportation methods: <strong>by</strong> + car/bus/train/plane. 'We went by car' = using a car as transport. NOT 'in car' or 'on car'."},
+  {id:22,text:"I don't know ____ people in this city.",opts:["a lot","many","much","some"],ans:1,cat:"quantifiers",exp:"'People' is countable (1 person, 2 people). Negative sentence → could be 'any', but since there IS a number reference, <strong>many</strong> = used in negatives with countable nouns."},
+  {id:23,text:"Which is ____: the mountain or the hill?",opts:["high","higher","more high","highest"],ans:1,cat:"comparatives",exp:"Comparing <strong>two</strong> things → Comparative + than. Short adj: high → <strong>higher</strong>. 'More high' is wrong; use -er for short adjectives."},
+  {id:24,text:"He ____ to school every day.",opts:["walk","walked","walking","walks"],ans:3,cat:"present-simple",exp:"'Every day' = Present Simple. He/she/it → verb + <strong>-s</strong>: walk → <strong>walks</strong>. Third person singular!"},
+  {id:25,text:"We met our teacher ____ the park.",opts:["in","at","on","by"],ans:0,cat:"prepositions-place",exp:"<strong>In</strong> = enclosed areas, open spaces treated as enclosed. We say 'in the park' (like being inside its boundaries). Compare: at the park entrance."},
+  {id:26,text:"I ____ never seen such a beautiful sunset.",opts:["have","has","had","was"],ans:0,cat:"present-perfect",exp:"Present Perfect = <strong>have/has + V3</strong>. I (first person) → <strong>have</strong>. 'Never' is a key word for Present Perfect. 'I have never seen...'"},
+  {id:27,text:"____ you like some tea?",opts:["Do","Would","Are","Have"],ans:1,cat:"modals",exp:"<strong>Would you like</strong> = polite way to offer something. 'Do you like' asks about general preference. 'Would you like' = offering right now."},
+  {id:28,text:"She is taller ____ her sister.",opts:["from","of","than","then"],ans:2,cat:"comparatives",exp:"After comparatives, always use <strong>than</strong>: taller <strong>than</strong>. 'Then' relates to time (first... then...). Common mistake: confusing 'than' with 'then'."},
+  {id:29,text:"The movie was ____ boring.",opts:["so","such","much","very"],ans:0,cat:"structures",exp:"<strong>So + adjective</strong> (no noun): 'so boring'. Use 'such' with a noun: 'such a boring movie'. 'Very' also works but 'so' is the test answer here."},
+  {id:30,text:"They ____ at the cinema last night.",opts:["was","is","were","are"],ans:2,cat:"past-simple",exp:"'Last night' = Past. They (plural) → <strong>were</strong> (not was). Was = I/he/she/it. Were = you/we/they."},
+  {id:31,text:"My parents ____ in the garden.",opts:["is","are","was","be"],ans:1,cat:"present-simple",exp:"'Parents' = plural subject → <strong>are</strong>. Present tense + no time signal = Present Simple. My parents are (plural verb)."},
+  {id:32,text:"I don't have ____ money to buy that phone.",opts:["many","some","much","a lot"],ans:2,cat:"quantifiers",exp:"Money is <strong>uncountable</strong>. Negative sentence + uncountable → <strong>much</strong>. 'I don't have much money' = I have little money."},
+  {id:33,text:"She ____ to music every evening.",opts:["listen","listens","listening","listened"],ans:1,cat:"present-simple",exp:"'Every evening' = Present Simple. She (3rd person singular) → <strong>listens</strong>. Listen → listens (add -s for he/she/it)."},
+  {id:34,text:"The exam was ____ than I expected.",opts:["more difficult","difficult","most difficult","difficulty"],ans:0,cat:"comparatives",exp:"Long adjective (3 syllables) → use <strong>more</strong> + adjective. 'Difficult' has 3 syllables → <strong>more difficult than</strong>. Never 'difficulter'."},
+  {id:35,text:"We arrived ____ the airport at 6 AM.",opts:["at","in","on","by"],ans:0,cat:"prepositions-place",exp:"<strong>At</strong> + specific public places: at the airport, at the station, at school. 'Arrive at' = standard phrase for locations."},
+  {id:36,text:"There ____ a lot of noise in the street last night.",opts:["is","were","was","be"],ans:2,cat:"past-simple",exp:"'Last night' = Past. 'Noise' is uncountable/singular → <strong>was</strong>. 'There was a lot of noise' (singular concept)."},
+  {id:37,text:"She ____ never been to Cairo before.",opts:["has","have","had","is"],ans:0,cat:"present-perfect",exp:"Present Perfect = have/has + V3. She (3rd singular) → <strong>has</strong>. 'Never' + 'before' = life experience → Present Perfect."},
+  {id:38,text:"They ____ playing football when it started to rain.",opts:["are","was","were","is"],ans:2,cat:"past-continuous",exp:"Past Continuous = <strong>was/were + V-ing</strong>. They (plural) → <strong>were</strong>. 'When it started to rain' = another past action interrupted it."},
+  {id:39,text:"How ____ sugar do you want in your tea?",opts:["many","much","some","any"],ans:1,cat:"quantifiers",exp:"Sugar is <strong>uncountable</strong>. For uncountable nouns in questions → <strong>much</strong>. 'How much sugar' = asking about an uncountable quantity."},
+  {id:40,text:"The Nile is ____ river in the world.",opts:["long","longer","the longest","most long"],ans:2,cat:"comparatives",exp:"Comparing one thing to ALL others → <strong>Superlative</strong>. Long → the longest. Always 'the' before superlatives. 'Most long' is wrong; use -est for short adjectives."},
+  {id:41,text:"I ____ reading this book last week.",opts:["finish","finished","finishing","finishes"],ans:1,cat:"past-simple",exp:"'Last week' = Past Simple. Finish is regular: finish → <strong>finished</strong>. Past Simple for completed actions with a past time reference."},
+  {id:42,text:"Do you know ____ girl in the red dress?",opts:["that","this","these","those"],ans:0,cat:"determiners",exp:"<strong>That</strong> = singular + far/specific (pointing to someone not immediately next to you). 'That girl' = a specific girl being pointed out at a distance."},
+  {id:43,text:"He doesn't have ____ friends in the city.",opts:["any","some","a","much"],ans:0,cat:"quantifiers",exp:"Negative sentence (doesn't have) → use <strong>any</strong>. 'He doesn't have any friends' = zero friends. Any = negative/question."},
+  {id:44,text:"We stayed in Cairo ____ two weeks.",opts:["during","for","since","by"],ans:1,cat:"prepositions-time",exp:"<strong>For</strong> = duration (how long). 'For two weeks' answers 'how long?'. 'Since' needs a starting point (since Monday). 'During' needs a period name."},
+  {id:45,text:"____ she like to go with us?",opts:["Do","Would","Is","Has"],ans:1,cat:"modals",exp:"<strong>Would she like</strong> = polite invitation. 'Does she like' asks about general preference. For invitations and offers → Would + subject + like."},
+  {id:46,text:"I was born ____ 2002.",opts:["in","on","at","by"],ans:0,cat:"prepositions-time",exp:"For years → use <strong>in</strong>. 'Born in 2002'. Also: in January, in winter, in the morning. Rule: IN + year/month/season."},
+  {id:47,text:"My brother is ____ than me.",opts:["tall","taller","the tallest","more tall"],ans:1,cat:"comparatives",exp:"Comparing two people → Comparative. Tall (1 syllable) → <strong>taller</strong>. Add -er + than. 'More tall' is WRONG for short adjectives."},
+  {id:48,text:"I usually go to the gym ____ the morning.",opts:["at","in","on","by"],ans:1,cat:"prepositions-time",exp:"Parts of the day: <strong>in</strong> the morning / in the afternoon / in the evening. Exception: at night (not 'in the night' in most cases)."},
+  {id:49,text:"They ____ lunch when the phone rang.",opts:["have","having","were having","has"],ans:2,cat:"past-continuous",exp:"Past Continuous = <strong>were having</strong>. 'When the phone rang' = interruption. The longer action (were having lunch) was in progress when the shorter one (rang) happened."},
+  {id:50,text:"My sister ____ her homework already.",opts:["have done","did","has done","does"],ans:2,cat:"present-perfect",exp:"<strong>Already</strong> = key word for Present Perfect. My sister (singular) → <strong>has done</strong>. Present Perfect = recent completion with present relevance."},
+  {id:51,text:"I ____ like coffee, but now I do.",opts:["didn't","don't","doesn't","wasn't"],ans:0,cat:"past-simple",exp:"'But now I do' = contrast with the past. 'I didn't like' = Past Simple negative. Didn't = did not (past). Don't = present."},
+  {id:52,text:"There are ____ apples on the table.",opts:["some","any","much","a"],ans:0,cat:"quantifiers",exp:"Positive sentence with countable plural → use <strong>some</strong>. 'There are some apples' = an unspecified positive number. Any = negative/question."},
+  {id:53,text:"Let's go to the park, ____?",opts:["don't we","shall we","will we","do we"],ans:1,cat:"structures",exp:"<strong>Let's... shall we?</strong> = standard tag question formula for suggestions with 'let's'. 'Shall we' is the fixed tag for 'Let's'."},
+  {id:54,text:"He runs ____ than his brother.",opts:["fast","faster","fastest","more fast"],ans:1,cat:"comparatives",exp:"Fast is a 1-syllable adverb → Comparative = <strong>faster</strong>. Comparing two people. 'More fast' is wrong; short adverbs use -er."},
+  {id:55,text:"I haven't seen him ____ Monday.",opts:["for","since","from","during"],ans:1,cat:"prepositions-time",exp:"<strong>Since</strong> = from a specific point in time until now. 'Since Monday' = starting Monday and continuing to now. Use FOR + duration, SINCE + starting point."},
+  {id:56,text:"We ____ go to the cinema last night.",opts:["didn't","don't","weren't","hasn't"],ans:0,cat:"past-simple",exp:"'Last night' = Past Simple. Negative Past: <strong>didn't + base verb</strong>. 'We didn't go' is correct. Don't = present. Weren't = past continuous."},
+  {id:57,text:"She always ____ her keys.",opts:["lose","losing","loses","lost"],ans:2,cat:"present-simple",exp:"'Always' = Present Simple (habit). She (3rd singular) → <strong>loses</strong>. Lose → loses. A recurring habit described in present."},
+  {id:58,text:"How ____ does it cost?",opts:["many","much","long","far"],ans:1,cat:"quantifiers",exp:"Money is uncountable. For price/cost → 'How <strong>much</strong> does it cost?' Not 'How many' (that's for countable things)."},
+  {id:59,text:"They ____ watching TV when I came.",opts:["is","were","was","are"],ans:1,cat:"past-continuous",exp:"Past Continuous: they (plural) → <strong>were</strong> + watching. 'When I came' = the interrupting action. Were watching = action in progress at that time."},
+  {id:60,text:"I want to buy a new laptop, but I don't have ____ money.",opts:["some","any","few","many"],ans:1,cat:"quantifiers",exp:"Negative sentence (don't have) → <strong>any</strong>. Money is uncountable. 'I don't have any money' = zero money. 'Few' is for countable nouns."},
+  {id:61,text:"She ____ a new job last month.",opts:["finds","finding","found","find"],ans:2,cat:"past-simple",exp:"'Last month' = Past Simple. Find is irregular: find → <strong>found</strong>. Not 'finded'. Past Simple for completed past actions."},
+  {id:62,text:"I have lived here ____ five years.",opts:["since","for","from","at"],ans:1,cat:"prepositions-time",exp:"<strong>For</strong> + duration: 'for five years' answers 'how long?'. 'Since five years' is WRONG. Since needs a point: since 2019. For needs a period: for five years."},
+  {id:63,text:"We ____ dinner when the phone rang.",opts:["had","were having","are having","have"],ans:1,cat:"past-continuous",exp:"Past Continuous = <strong>were having</strong>. 'When the phone rang' shows an interruption. The ongoing action (dinner) was interrupted by the ringing."},
+  {id:64,text:"There isn't ____ water in the bottle.",opts:["any","many","a lot","some"],ans:0,cat:"quantifiers",exp:"Negative (isn't) → use <strong>any</strong>. Water is uncountable. 'There isn't any water' = no water. The key rule: negative sentences → any."},
+  {id:65,text:"He always ____ his homework after school.",opts:["do","doing","does","did"],ans:2,cat:"present-simple",exp:"'Always' = Present Simple habit. He (3rd singular) → <strong>does</strong>. Do → does for he/she/it. 'He does his homework' is correct."},
+  {id:66,text:"This is the ____ movie I've ever seen.",opts:["more interesting","interesting","most interesting","interest"],ans:2,cat:"comparatives",exp:"Superlative with long adjective: the <strong>most interesting</strong>. 'Ever' + 'the' = superlative signal. Interesting (4 syllables) → most interesting (not interestingest!)."},
+  {id:67,text:"I will call you when I ____ home.",opts:["get","got","gets","getting"],ans:0,cat:"structures",exp:"In time clauses with 'when/if', use Present Simple (not future). 'When I <strong>get</strong> home' (not 'will get'). This is a key grammar rule: future time clauses use present tense."},
+  {id:68,text:"We ____ to Paris last summer.",opts:["go","went","going","gone"],ans:1,cat:"past-simple",exp:"'Last summer' = Past Simple. Go is irregular: go → <strong>went</strong>. 'Gone' is V3 (used with have/has). 'Went' = V2 (Past Simple)."},
+  {id:69,text:"The students ____ in the classroom now.",opts:["is","are","was","be"],ans:1,cat:"present-simple",exp:"'Students' = plural → <strong>are</strong>. Present tense. 'Now' signals the action is happening currently → Present Continuous (are being) or this could be location → are."},
+  {id:70,text:"I was born ____ January.",opts:["at","in","on","by"],ans:1,cat:"prepositions-time",exp:"Months use <strong>in</strong>: born in January, in March, in December. Days use 'on', years use 'in', exact times use 'at'. January = month → IN."},
+  {id:71,text:"My brother ____ watching TV when I came in.",opts:["is","was","were","are"],ans:1,cat:"past-continuous",exp:"Past Continuous: My brother (singular) → <strong>was</strong> + watching. 'When I came in' = interruption. Was watching = in progress at that past moment."},
+  {id:72,text:"I ____ him yesterday.",opts:["see","seen","saw","seeing"],ans:2,cat:"past-simple",exp:"'Yesterday' = Past Simple. See is irregular: see → <strong>saw</strong> (V2). 'Seen' is V3, used with have/has. 'Saw' = correct Past Simple."},
+  {id:73,text:"How ____ milk do you drink?",opts:["many","much","any","some"],ans:1,cat:"quantifiers",exp:"Milk is <strong>uncountable</strong>. For questions about uncountable quantities → <strong>much</strong>. 'How much milk' = asking about the amount of an uncountable noun."},
+  {id:74,text:"They ____ go to the gym every day.",opts:["doesn't","don't","didn't","aren't"],ans:1,cat:"present-simple",exp:"They (plural) + present negative → <strong>don't</strong>. Don't = do not. Doesn't = does not (he/she/it). 'They don't go' is Present Simple negative."},
+  {id:75,text:"The sun ____ in the east.",opts:["rise","rises","rising","rose"],ans:1,cat:"present-simple",exp:"Scientific/natural facts → Present Simple. The sun (singular) → <strong>rises</strong>. A permanent, universal truth expressed in Present Simple."},
+  {id:76,text:"I ____ to the radio when she knocked.",opts:["was listening","listened","listens","am listening"],ans:0,cat:"past-continuous",exp:"Past Continuous: <strong>was listening</strong>. 'When she knocked' = the interruption. I was in the middle of listening when something happened."},
+  {id:77,text:"She ____ in London since 2015.",opts:["lives","lived","has lived","living"],ans:2,cat:"present-perfect",exp:"<strong>Since 2015</strong> = from a past point until NOW (she still lives there). Use Present Perfect: <strong>has lived</strong>. Since = Present Perfect signal."},
+  {id:78,text:"This book is ____ than that one.",opts:["interesting","more interesting","most interesting","interest"],ans:1,cat:"comparatives",exp:"Comparing two things → Comparative. Long adjective (5 syllables) → <strong>more interesting than</strong>. Never 'interestinger'."},
+  {id:79,text:"There are ____ apples in the basket.",opts:["some","much","any","a"],ans:0,cat:"quantifiers",exp:"Positive sentence + countable plural → <strong>some</strong>. 'There are some apples' = a positive amount. Any = negative/question. Much = uncountable."},
+  {id:80,text:"We ____ our grandparents every weekend.",opts:["visit","visits","visited","visiting"],ans:0,cat:"present-simple",exp:"We (plural) + Present Simple → base verb with no -s: <strong>visit</strong>. 'Every weekend' = habit → Present Simple. We/I/you/they → no -s."},
+  {id:81,text:"She was tired, ____ she went to bed early.",opts:["but","so","and","because"],ans:1,cat:"structures",exp:"<strong>So</strong> = result/consequence. She was tired (cause) → so she went to bed early (result). 'Because' would be: she went early because she was tired (reason clause)."},
+  {id:82,text:"He can run ____ than me.",opts:["fast","faster","fastest","the faster"],ans:1,cat:"comparatives",exp:"Comparing two people → Comparative. Fast (1 syllable) → <strong>faster</strong>. 'He can run faster than me' = comparing speeds of two people."},
+  {id:83,text:"I haven't seen her ____ Monday.",opts:["for","since","on","at"],ans:1,cat:"prepositions-time",exp:"<strong>Since</strong> + specific day/time = from that point until now. 'Since Monday' = she left Monday, I haven't seen her from then until now. Have/has + since = Present Perfect."},
+  {id:84,text:"They ____ to the zoo tomorrow.",opts:["go","going","went","are going"],ans:3,cat:"future",exp:"Future plan → <strong>are going to</strong> + base verb. 'Tomorrow' = future time signal. 'Are going' without 'to' is incomplete. Going TO + verb = future plan."},
+  {id:85,text:"What time ____ the train leave?",opts:["do","does","did","doing"],ans:1,cat:"present-simple",exp:"'The train' = singular (3rd person) → <strong>does</strong>. Present Simple question: Does + subject + base verb. 'Does the train leave' = asking about schedule."},
+  {id:86,text:"My parents ____ in Cairo.",opts:["live","lives","lived","are living"],ans:0,cat:"present-simple",exp:"My parents (plural) → <strong>live</strong> (no -s). Present Simple for permanent situations. My parents = they → live (base verb, no -s for plural)."},
+  {id:87,text:"We ____ studying English for two years.",opts:["have","has","have been","had been"],ans:2,cat:"present-perfect",exp:"<strong>Have been + V-ing</strong> = Present Perfect Continuous. 'For two years' = duration still ongoing. We are still studying → have been studying (started past, continues now)."},
+  {id:88,text:"The children ____ playing outside.",opts:["is","are","was","be"],ans:1,cat:"present-continuous",exp:"'Children' = plural → <strong>are</strong>. Present Continuous = are + playing. The children (plural) are playing = happening now."},
+  {id:89,text:"I ____ a shower when the phone rang.",opts:["take","took","was taking","taken"],ans:2,cat:"past-continuous",exp:"Past Continuous = <strong>was taking</strong>. 'When the phone rang' = interruption. I was in the middle of showering when the phone rang."},
+  {id:90,text:"She ____ a lot of friends.",opts:["have","has","having","had"],ans:1,cat:"present-simple",exp:"She (3rd singular) + Present Simple → <strong>has</strong>. 'Have' for I/you/we/they. 'Has' for he/she/it. 'She has a lot of friends.'"},
+  {id:91,text:"He ____ speak three languages.",opts:["can","does","is","has"],ans:0,cat:"modals",exp:"<strong>Can</strong> = ability. 'He can speak three languages' = he has the ability. Modal + base verb: can speak ✓. Not 'can to speak' or 'can speaks'."},
+  {id:92,text:"They ____ to the party last night.",opts:["doesn't go","didn't go","don't go","haven't gone"],ans:1,cat:"past-simple",exp:"'Last night' = Past Simple. Negative Past: <strong>didn't + base verb</strong>. 'They didn't go' (not 'didn't went'). Past simple negative always uses base verb after didn't."},
+  {id:93,text:"____ you ever been to Italy?",opts:["Did","Have","Has","Do"],ans:1,cat:"present-perfect",exp:"Present Perfect question for life experience: <strong>Have you ever</strong>...? 'Ever' = at any time in your life. Have/Has + subject + ever + V3."},
+  {id:94,text:"I ____ reading a great book now.",opts:["am","is","are","was"],ans:0,cat:"present-continuous",exp:"Present Continuous: I → <strong>am</strong> + V-ing. 'Now' = action in progress. I am reading = happening at this moment. Am is for first person singular (I)."},
+  {id:95,text:"She ____ to work every day.",opts:["drive","drives","driving","drove"],ans:1,cat:"present-simple",exp:"'Every day' = Present Simple. She (3rd singular) → <strong>drives</strong>. Drive → drives. Regular habit expressed in Present Simple."},
+  {id:96,text:"The cake was ____ delicious!",opts:["very","so much","much","more"],ans:0,cat:"structures",exp:"<strong>Very + adjective</strong>: 'very delicious'. 'So' also works (so delicious) but 'very' is the standard intensifier with adjectives. 'Much' is for comparatives."},
+  {id:97,text:"He ____ go to school on Fridays.",opts:["not","don't","doesn't","isn't"],ans:2,cat:"present-simple",exp:"He (3rd singular) + Present Simple negative → <strong>doesn't</strong> + base verb. Don't = I/you/we/they. Doesn't = he/she/it. 'He doesn't go.'"},
+  {id:98,text:"My sister is ____ than me.",opts:["old","older","oldest","more old"],ans:1,cat:"comparatives",exp:"Comparing two people → Comparative. Old (1 syllable) → <strong>older</strong>. Add -er + than. 'More old' is wrong; use -er for short adjectives."},
+  {id:99,text:"I ____ like coffee.",opts:["doesn't","don't","am not","haven't"],ans:1,cat:"present-simple",exp:"I + Present Simple negative → <strong>don't</strong>. Don't = do not (for I/you/we/they). Doesn't = does not (he/she/it). 'I don't like coffee.'"},
+  {id:100,text:"The cat is hiding ____ the table.",opts:["in","under","on","at"],ans:1,cat:"prepositions-place",exp:"<strong>Under</strong> = below something. 'Hiding under the table' = the cat is beneath the table. Under = directly below and touching or very close."},
+];
+
+// ═══════════════════════════════════════
+//  EXTRA PRACTICE QUESTIONS (50+)
+// ═══════════════════════════════════════
+const PRACTICE_BANK = {
+  "present-simple": [
+    {text:"Water ____ at 100°C.",opts:["boil","boils","boiled","boiling"],ans:1,exp:"Scientific facts → Present Simple. Water (singular) → <strong>boils</strong>."},
+    {text:"She ____ her teeth twice a day.",opts:["brush","brushes","brushed","brushing"],ans:1,exp:"She → brushes (3rd person singular, add -s/-es)."},
+    {text:"They ____ breakfast at 7 every morning.",opts:["have","has","had","having"],ans:0,exp:"They (plural) → <strong>have</strong>. No -s for plural subjects."},
+    {text:"The bank ____ at 9 AM on weekdays.",opts:["open","opens","opened","opening"],ans:1,exp:"The bank (singular) → <strong>opens</strong>. Schedule/fact → Present Simple."},
+    {text:"I ____ English with my friends online.",opts:["practice","practices","practiced","practicing"],ans:0,exp:"I → base verb (no -s): <strong>practice</strong>."},
+  ],
+  "past-simple": [
+    {text:"We ____ a fantastic meal at that restaurant.",opts:["have","had","has","having"],ans:1,exp:"Past Simple completed action → <strong>had</strong>. No time signal needed when context is clear."},
+    {text:"He ____ his car keys this morning.",opts:["lose","loses","lost","losing"],ans:2,exp:"'This morning' (past) → Past Simple. Lose is irregular: lose → <strong>lost</strong>."},
+    {text:"They ____ very surprised by the news.",opts:["is","are","was","were"],ans:3,exp:"They + past → <strong>were</strong>. Surprised is an adjective → verb to be in past."},
+    {text:"I ____ my homework before dinner.",opts:["finish","finishes","finished","finishing"],ans:2,exp:"'Before dinner' suggests past completed → <strong>finished</strong>."},
+    {text:"She ____ for the interview for weeks.",opts:["prepare","prepares","prepared","has prepared"],ans:2,exp:"Implied past period with completion → Past Simple <strong>prepared</strong>."},
+  ],
+  "present-perfect": [
+    {text:"I ____ just eaten lunch.",opts:["have","has","had","am"],ans:0,exp:"<strong>Just</strong> = Present Perfect signal. I → <strong>have</strong> just eaten."},
+    {text:"She ____ already sent the email.",opts:["have","has","had","is"],ans:1,exp:"She (singular) + <strong>already</strong> = Present Perfect. → <strong>has</strong>."},
+    {text:"____ you finished your homework yet?",opts:["Did","Have","Has","Do"],ans:1,exp:"<strong>Yet</strong> in a question = Present Perfect. Have you finished yet?"},
+    {text:"They ____ known each other for 10 years.",opts:["have","has","are","were"],ans:0,exp:"They + <strong>for</strong> (duration still ongoing) → Present Perfect: <strong>have known</strong>."},
+    {text:"He ____ never tried sushi before.",opts:["have","has","had","was"],ans:1,exp:"He + <strong>never</strong> = life experience → Present Perfect. → <strong>has</strong>."},
+  ],
+  "past-continuous": [
+    {text:"What ____ you doing at 8 PM last night?",opts:["are","were","was","did"],ans:1,exp:"You + Past Continuous → <strong>were</strong>. Asking about an action in progress at a past time."},
+    {text:"It ____ raining when we left the house.",opts:["is","was","were","has"],ans:1,exp:"It (singular) + Past Continuous → <strong>was</strong> raining."},
+    {text:"The children ____ sleeping when the storm started.",opts:["are","is","were","was"],ans:2,exp:"Children (plural) + Past Continuous → <strong>were</strong> sleeping."},
+    {text:"I ____ thinking about you when you called.",opts:["am","was","were","is"],ans:1,exp:"I + Past Continuous → <strong>was</strong>. Ongoing thought interrupted by the call."},
+    {text:"She ____ cooking dinner while he was watching TV.",opts:["is","are","was","were"],ans:2,exp:"She + Past Continuous → <strong>was</strong> cooking. Two actions in progress simultaneously."},
+  ],
+  "quantifiers": [
+    {text:"There isn't ____ time to finish the test.",opts:["many","much","some","any"],ans:3,exp:"Negative sentence → <strong>any</strong>. Time is uncountable."},
+    {text:"Do you have ____ questions?",opts:["much","many","any","some"],ans:2,exp:"Question sentence → <strong>any</strong>. Questions are countable."},
+    {text:"I bought ____ new clothes last weekend.",opts:["much","any","some","many"],ans:2,exp:"Positive sentence → <strong>some</strong> (or many, but some is more natural for positive)."},
+    {text:"How ____ homework did the teacher give?",opts:["many","much","some","any"],ans:1,exp:"Homework is uncountable → <strong>much</strong>. 'How much homework?' is correct."},
+    {text:"She has ____ experience in that field.",opts:["many","much","any","few"],ans:1,exp:"Experience is uncountable → <strong>much</strong>. Positive: 'She has much experience.'"},
+  ],
+  "comparatives": [
+    {text:"Cairo is ____ than Alexandria.",opts:["big","bigger","biggest","more big"],ans:1,exp:"Comparing 2 cities. Big (1 syllable, double g) → <strong>bigger</strong> + than."},
+    {text:"This exercise is ____ than the last one.",opts:["easy","more easy","easier","easiest"],ans:2,exp:"Easy ends in -y → change to i + er: <strong>easier</strong>."},
+    {text:"She speaks English ____ than her brother.",opts:["good","better","best","more good"],ans:1,exp:"Good is irregular: good → <strong>better</strong> → the best."},
+    {text:"The new phone is ____ expensive than the old model.",opts:["much more","more","most","as"],ans:0,exp:"<strong>Much more expensive</strong> = emphasizing the comparison. Much more = much + comparative."},
+    {text:"January is ____ month of the year in Egypt.",opts:["cold","colder","the coldest","more cold"],ans:2,exp:"One month vs all → Superlative. Cold → <strong>the coldest</strong>."},
+  ],
+  "prepositions": [
+    {text:"I'll meet you ____ the café at noon.",opts:["in","at","on","by"],ans:1,exp:"Specific meeting points → <strong>at</strong>. 'Meet at the café.'"},
+    {text:"She was born ____ a cold winter day.",opts:["in","at","on","by"],ans:2,exp:"Specific days (including described days) → <strong>on</strong>: on a cold winter day."},
+    {text:"The meeting starts ____ 9 o'clock ____ Monday.",opts:["at ... on","in ... on","at ... in","on ... at"],ans:0,exp:"Time → <strong>at</strong>. Day → <strong>on</strong>. At 9 o'clock on Monday."},
+    {text:"I've been waiting ____ two hours.",opts:["since","for","during","from"],ans:1,exp:"<strong>For</strong> + duration: for two hours. 'Since' needs a clock time or day."},
+    {text:"The post office is ____ the school and the bakery.",opts:["near","between","among","over"],ans:1,exp:"<strong>Between</strong> = in the middle of two things. Between A and B."},
+  ],
+  "modals": [
+    {text:"You ____ eat vegetables every day. They're good for you.",opts:["must","can","would","might"],ans:0,exp:"Strong recommendation/obligation → <strong>must</strong>. You must eat = it's important."},
+    {text:"____ I open the window? It's very hot.",opts:["Would","Shall","Can","Must"],ans:2,exp:"Asking for permission → <strong>Can</strong> I? (informal). Could I? is more formal."},
+    {text:"He ____ swim very well when he was young.",opts:["can","could","would","should"],ans:1,exp:"Past ability → <strong>could</strong>. Can = present ability. Could = past ability."},
+    {text:"You look pale. You ____ see a doctor.",opts:["would","must","should","can"],ans:2,exp:"Advice/recommendation → <strong>should</strong>. Should = I advise you to."},
+    {text:"____ you pass me the salt, please?",opts:["Would","Shall","Must","Have"],ans:0,exp:"Polite request → <strong>Would</strong> you...? = very polite. Can you is less formal."},
+  ],
+  "structures": [
+    {text:"It was ____ hot day ____ everyone went to the beach.",opts:["such a ... that","so ... that","such ... that","so a ... that"],ans:0,exp:"<strong>Such a + adjective + noun + that</strong>. It was such a hot day that everyone..."},
+    {text:"She isn't ____ to travel alone.",opts:["enough old","old enough","enough older","very old"],ans:1,exp:"<strong>Adjective + enough</strong>: old enough. Enough comes AFTER adjectives."},
+    {text:"He studied hard, ____ he passed the exam.",opts:["but","because","so","although"],ans:2,exp:"Cause (studied hard) → result (passed) = <strong>so</strong>. So connects cause to result."},
+    {text:"The weather was ____ cold ____ we stayed inside.",opts:["so ... that","such ... that","very ... that","too ... that"],ans:0,exp:"<strong>So + adjective (no noun) + that</strong>. The weather was so cold that..."},
+    {text:"You are old enough, aren't ____?",opts:["you","it","they","he"],ans:0,exp:"Tag question: positive sentence → negative tag. 'aren't <strong>you</strong>?' matches the subject."},
+  ],
+};
+
+const TOPIC_INFO = {
+  "present-simple": {name:"Present Simple",icon:"🔄",color:"var(--teal)"},
+  "past-simple": {name:"Past Simple",icon:"⏪",color:"var(--blue)"},
+  "present-perfect": {name:"Present Perfect",icon:"✅",color:"var(--success)"},
+  "past-continuous": {name:"Past Continuous",icon:"🌀",color:"var(--gold)"},
+  "quantifiers": {name:"Quantifiers",icon:"🔢",color:"var(--coral)"},
+  "comparatives": {name:"Comparatives",icon:"📈",color:"var(--teal2)"},
+  "prepositions": {name:"Prepositions",icon:"📍",color:"#c084fc"},
+  "modals": {name:"Modal Verbs",icon:"🎛️",color:"var(--blue)"},
+  "structures": {name:"Special Structures",icon:"🏗️",color:"var(--gold)"},
+};
+
+// ═══════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════
+let currentPage = 0;
+let userAnswers = {};
+let testQuestions = [];
+let currentTestMode = 'full';
+let timerInterval = null;
+let timerSeconds = 0;
+let wrongAnswers = [];
+let selectedPracticeTopic = 'present-simple';
+let practiceAnswers = {};
+let practiceQuestions = [];
+let practiceSubmitted = false;
+
+// ═══════════════════════════════════════
+//  NAVIGATION
+// ═══════════════════════════════════════
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.add('section-hidden'));
+  document.getElementById(id).classList.remove('section-hidden');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const navMap = {home:0,test:1,grammar:2,practice:3};
+  const btns = document.querySelectorAll('.nav-btn');
+  if (navMap[id] !== undefined) btns[navMap[id]].classList.add('active');
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo(0,0);
+}
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ═══════════════════════════════════════
+//  TEST ENGINE
+// ═══════════════════════════════════════
+const PAGE_SIZE = 10;
+
+function startTest(mode) {
+  currentTestMode = mode;
+  userAnswers = {};
+  currentPage = 0;
+  clearInterval(timerInterval);
+  timerSeconds = 0;
+  
+  if (mode === 'full') {
+    testQuestions = [...ALL_QUESTIONS];
+  } else if (mode === 'quick') {
+    testQuestions = shuffle([...ALL_QUESTIONS]).slice(0, 20);
+  } else if (mode === 'wrong') {
+    testQuestions = wrongAnswers.length > 0
+      ? ALL_QUESTIONS.filter(q => wrongAnswers.includes(q.id))
+      : shuffle([...ALL_QUESTIONS]).slice(0, 20);
+  }
+
+  const totalPages = Math.ceil(testQuestions.length / PAGE_SIZE);
+  document.getElementById('pageTotal').textContent = totalPages;
+  
+  startTimer();
+  renderPage();
+  showSection('test');
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timerSeconds = 0;
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    const m = String(Math.floor(timerSeconds/60)).padStart(2,'0');
+    const s = String(timerSeconds%60).padStart(2,'0');
+    document.getElementById('timerVal').textContent = m+':'+s;
+  }, 1000);
+}
+
+function renderPage() {
+  const totalPages = Math.ceil(testQuestions.length / PAGE_SIZE);
+  const start = currentPage * PAGE_SIZE;
+  const end = Math.min(start + PAGE_SIZE, testQuestions.length);
+  const pageQs = testQuestions.slice(start, end);
+
+  document.getElementById('pageNum').textContent = currentPage + 1;
+  document.getElementById('pageRange').textContent = `${start+1}–${end}`;
+  document.getElementById('totalShown').textContent = testQuestions.length;
+
+  const pct = ((currentPage + 1) / totalPages) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  prevBtn.style.visibility = currentPage === 0 ? 'hidden' : 'visible';
+  
+  if (currentPage === totalPages - 1) {
+    nextBtn.textContent = '✓ Submit Test';
+    nextBtn.style.background = 'linear-gradient(135deg,var(--success),#00a060)';
+  } else {
+    nextBtn.textContent = 'Next →';
+    nextBtn.style.background = '';
+  }
+
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+
+  pageQs.forEach((q, idx) => {
+    const qIdx = start + idx;
+    const card = document.createElement('div');
+    card.className = 'q-card fade-in' + (userAnswers[q.id] !== undefined ? ' answered' : '');
+    card.id = 'qcard-' + q.id;
+
+    const opts = q.opts.map((opt, i) => {
+      const letter = ['A','B','C','D'][i];
+      const sel = userAnswers[q.id] === i;
+      return `<div class="q-option${sel?' selected':''}" onclick="selectAnswer(${q.id},${i},this)">
+        <div class="opt-letter">${letter}</div>
+        <input type="radio" name="q${q.id}" id="q${q.id}o${i}" ${sel?'checked':''} style="display:none">
+        <label for="q${q.id}o${i}">${opt}</label>
+      </div>`;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="q-num">Question ${qIdx+1} of ${testQuestions.length}</div>
+      <div class="q-text">${q.text}</div>
+      <div class="q-options">${opts}</div>
+    `;
+    container.appendChild(card);
+  });
+
+  updateAnsweredCount();
+}
+
+function selectAnswer(qId, optIdx, el) {
+  userAnswers[qId] = optIdx;
+  const card = document.getElementById('qcard-' + qId);
+  if (card) card.classList.add('answered');
+  card.querySelectorAll('.q-option').forEach((o, i) => {
+    o.classList.toggle('selected', i === optIdx);
+  });
+  updateAnsweredCount();
+}
+
+function updateAnsweredCount() {
+  const start = currentPage * PAGE_SIZE;
+  const end = Math.min(start + PAGE_SIZE, testQuestions.length);
+  const pageQs = testQuestions.slice(start, end);
+  const ans = pageQs.filter(q => userAnswers[q.id] !== undefined).length;
+  document.getElementById('answeredCount').textContent = ans;
+}
+
+function changePage(dir) {
+  const totalPages = Math.ceil(testQuestions.length / PAGE_SIZE);
+  if (dir === 1 && currentPage === totalPages - 1) {
+    submitTest();
+    return;
+  }
+  currentPage = Math.max(0, Math.min(totalPages - 1, currentPage + dir));
+  renderPage();
+  window.scrollTo(0, 80);
+}
+
+// ═══════════════════════════════════════
+//  RESULTS ENGINE
+// ═══════════════════════════════════════
+function submitTest() {
+  clearInterval(timerInterval);
+  
+  let correct = 0;
+  wrongAnswers = [];
+  const catStats = {};
+
+  testQuestions.forEach(q => {
+    const cat = q.cat;
+    if (!catStats[cat]) catStats[cat] = {total:0, correct:0};
+    catStats[cat].total++;
+    const userAns = userAnswers[q.id];
+    if (userAns === q.ans) {
+      correct++;
+      catStats[cat].correct++;
+    } else {
+      wrongAnswers.push(q.id);
+    }
+  });
+
+  const total = testQuestions.length;
+  const pct = Math.round((correct / total) * 100);
+
+  showSection('results');
+
+  // Score ring
+  setTimeout(() => {
+    const ring = document.getElementById('scoreRingFill');
+    const circumference = 2 * Math.PI * 74;
+    const offset = circumference * (1 - pct/100);
+    const color = pct >= 80 ? 'var(--success)' : pct >= 60 ? 'var(--blue)' : pct >= 40 ? 'var(--gold)' : 'var(--error)';
+    ring.style.stroke = color;
+    ring.style.strokeDashoffset = offset;
+    document.getElementById('scorePct').style.color = color;
+  }, 100);
+
+  animateCount(0, pct, 1000, v => {
+    document.getElementById('scorePct').textContent = v + '%';
+  });
+
+  document.getElementById('scoreRaw').textContent = `${correct} / ${total} Correct`;
+
+  let grade, msg;
+  if (pct >= 90) { grade = 'A+'; msg = '🌟 Excellent! You are fully prepared for the exam!'; }
+  else if (pct >= 80) { grade = 'A'; msg = '🎉 Great job! A few more reviews and you\'ll ace it!'; }
+  else if (pct >= 70) { grade = 'B'; msg = '👍 Good work! Focus on the highlighted grammar areas.'; }
+  else if (pct >= 60) { grade = 'C'; msg = '📚 Keep studying! Review the Grammar Guide sections.'; }
+  else { grade = 'D'; msg = '💪 Don\'t give up! Go through the Grammar Guide carefully and retry.'; }
+
+  const gb = document.getElementById('gradeBadge');
+  gb.textContent = 'Grade: ' + grade;
+  gb.className = 'grade-badge grade-' + grade[0];
+  document.getElementById('scoreMsg').textContent = msg;
+
+  // Category breakdown
+  const catContainer = document.getElementById('catResults');
+  catContainer.innerHTML = '';
+  const catNames = {
+    'present-simple':'Present Simple','past-simple':'Past Simple',
+    'present-continuous':'Pres. Continuous','past-continuous':'Past Continuous',
+    'present-perfect':'Pres. Perfect','past-perfect':'Past Perfect',
+    'future':'Future','quantifiers':'Quantifiers',
+    'comparatives':'Comparatives/Superlatives','structures':'Special Structures',
+    'prepositions-time':'Prepositions (Time)','prepositions-place':'Prepositions (Place)',
+    'modals':'Modal Verbs','determiners':'Determiners'
+  };
+
+  Object.entries(catStats).forEach(([cat, data]) => {
+    const p = Math.round((data.correct/data.total)*100);
+    const c = p >= 80 ? 'var(--success)' : p >= 50 ? 'var(--gold)' : 'var(--error)';
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.innerHTML = `
+      <div class="cat-title">${catNames[cat] || cat}</div>
+      <div class="cat-bar"><div class="cat-fill" style="width:${p}%;background:${c}"></div></div>
+      <div class="cat-score" style="color:${c}">${data.correct}/${data.total} (${p}%)</div>
+    `;
+    catContainer.appendChild(card);
+  });
+
+  // Wrong answers
+  if (wrongAnswers.length > 0) {
+    document.getElementById('wrongSection').style.display = 'block';
+    const wl = document.getElementById('wrongList');
+    wl.innerHTML = '';
+    wrongAnswers.slice(0, 30).forEach(qId => {
+      const q = testQuestions.find(x => x.id === qId);
+      if (!q) return;
+      const userAns = userAnswers[q.id];
+      const userOptText = userAns !== undefined ? q.opts[userAns] : 'Not answered';
+      const correctOptText = q.opts[q.ans];
+      const item = document.createElement('div');
+      item.className = 'wrong-item';
+      item.innerHTML = `
+        <div class="wrong-qnum">Question ${q.id}</div>
+        <div class="wrong-qtext">${q.text}</div>
+        <div class="wrong-answers">
+          <div class="ans-tag ans-wrong">✗ Your answer: ${userOptText}</div>
+          <div class="ans-tag ans-correct">✓ Correct: ${correctOptText}</div>
+        </div>
+        <div class="wrong-explain">💡 ${q.exp}</div>
+      `;
+      wl.appendChild(item);
+    });
+    if (wrongAnswers.length > 30) {
+      const note = document.createElement('p');
+      note.style.cssText = 'text-align:center;color:var(--muted);padding:16px;font-size:.88rem';
+      note.textContent = `... and ${wrongAnswers.length - 30} more. Click "Practice Wrong Only" to study them!`;
+      wl.appendChild(note);
+    }
+  } else {
+    document.getElementById('wrongSection').style.display = 'none';
+  }
+
+  if (pct >= 80) launchConfetti();
+}
+
+function animateCount(from, to, dur, cb) {
+  const start = Date.now();
+  const step = () => {
+    const p = Math.min((Date.now()-start)/dur, 1);
+    cb(Math.round(from + (to-from)*easeOut(p)));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+function easeOut(t) { return 1 - Math.pow(1-t,3); }
+
+function launchConfetti() {
+  const colors = ['#00d4c2','#ffc947','#ff7b6b','#4a9eff','#3dd68c'];
+  for (let i = 0; i < 80; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `left:${Math.random()*100}vw;background:${colors[Math.random()*colors.length|0]};border-radius:${Math.random()>0.5?'50%':'2px'};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*1}s`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  }
+}
+
+// ═══════════════════════════════════════
+//  GRAMMAR TABS
+// ═══════════════════════════════════════
+function showGrammarTab(tab) {
+  document.querySelectorAll('.grammar-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.gtab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-'+tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ═══════════════════════════════════════
+//  PRACTICE ENGINE
+// ═══════════════════════════════════════
+function initPractice() {
+  const topicSel = document.getElementById('topicSelector');
+  topicSel.innerHTML = '';
+  Object.entries(TOPIC_INFO).forEach(([key, info]) => {
+    const card = document.createElement('div');
+    card.className = 'topic-card' + (key === selectedPracticeTopic ? ' selected' : '');
+    card.innerHTML = `<div class="t-icon">${info.icon}</div><div class="t-name">${info.name}</div>`;
+    card.onclick = () => {
+      document.querySelectorAll('.topic-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      selectedPracticeTopic = key;
+    };
+    topicSel.appendChild(card);
+  });
+}
+
+function startPracticePrebuilt() {
+  const qs = PRACTICE_BANK[selectedPracticeTopic] || PRACTICE_BANK['present-simple'];
+  practiceQuestions = shuffle([...qs]);
+  practiceAnswers = {};
+  practiceSubmitted = false;
+  renderPracticeQuiz(practiceQuestions, false);
+}
+
+function renderPracticeQuiz(qs, isAI) {
+  const container = document.getElementById('practiceContainer');
+  container.innerHTML = `<h3 style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px">${isAI?'🤖 AI-Generated':'📝 Practice'} Questions — ${TOPIC_INFO[selectedPracticeTopic]?.name || selectedPracticeTopic}</h3>`;
+  
+  qs.forEach((q, idx) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'pqcard-'+idx;
+    const opts = q.opts.map((opt, i) => {
+      const letter = ['A','B','C','D'][i];
+      return `<div class="q-option" onclick="selectPracticeAnswer(${idx},${i},this)">
+        <div class="opt-letter">${letter}</div>
+        <label>${opt}</label>
+      </div>`;
+    }).join('');
+    card.innerHTML = `
+      <div class="q-num">Question ${idx+1}</div>
+      <div class="q-text">${q.text}</div>
+      <div class="q-options">${opts}</div>
+    `;
+    container.appendChild(card);
+  });
+
+  const submitBtn = document.createElement('button');
+  submitBtn.className = 'btn-primary';
+  submitBtn.style.marginTop = '20px';
+  submitBtn.textContent = '✓ Submit Practice';
+  submitBtn.onclick = submitPractice;
+  container.appendChild(submitBtn);
+}
+
+function selectPracticeAnswer(qIdx, optIdx, el) {
+  if (practiceSubmitted) return;
+  practiceAnswers[qIdx] = optIdx;
+  const card = document.getElementById('pqcard-'+qIdx);
+  card.querySelectorAll('.q-option').forEach((o, i) => {
+    o.classList.toggle('selected', i === optIdx);
+  });
+}
+
+function submitPractice() {
+  practiceSubmitted = true;
+  let correct = 0;
+  const container = document.getElementById('practiceContainer');
+
+  practiceQuestions.forEach((q, idx) => {
+    const card = document.getElementById('pqcard-'+idx);
+    const userAns = practiceAnswers[idx];
+    if (userAns === q.ans) correct++;
+
+    card.querySelectorAll('.q-option').forEach((opt, i) => {
+      if (i === q.ans) {
+        opt.style.background = 'rgba(61,214,140,0.15)';
+        opt.style.borderColor = 'var(--success)';
+        opt.style.color = 'var(--success)';
+      } else if (userAns === i) {
+        opt.style.background = 'rgba(255,107,107,0.15)';
+        opt.style.borderColor = 'var(--error)';
+        opt.style.color = 'var(--error)';
+      }
+      opt.style.cursor = 'default';
+    });
+
+    const expDiv = document.createElement('div');
+    expDiv.className = 'wrong-explain';
+    expDiv.style.marginTop = '12px';
+    expDiv.innerHTML = '💡 ' + q.exp;
+    card.appendChild(expDiv);
+  });
+
+  const pct = Math.round((correct / practiceQuestions.length) * 100);
+  const resDiv = document.createElement('div');
+  resDiv.className = 'practice-results fade-in';
+  const color = pct >= 80 ? 'var(--success)' : pct >= 60 ? 'var(--gold)' : 'var(--error)';
+  resDiv.innerHTML = `
+    <div class="p-score" style="color:${color}">${correct}/${practiceQuestions.length}</div>
+    <div class="p-label">${pct}% — ${pct>=80?'Excellent! 🌟':pct>=60?'Good job! 👍':'Keep practicing! 💪'}</div>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap">
+      <button class="btn-outline btn-sm" onclick="startPracticePrebuilt()">🔄 New Practice</button>
+      <button class="btn-ghost btn-sm" onclick="showSection('grammar')">📖 Grammar Guide</button>
+    </div>
+  `;
+  container.appendChild(resDiv);
+  if (pct >= 80) launchConfetti();
+}
+
+// ═══════════════════════════════════════
+//  AI QUESTION GENERATOR
+// ═══════════════════════════════════════
+async function generateAIQuestions() {
+  const apiKey = document.getElementById('apiKeyInput').value.trim();
+  if (!apiKey) { showToast('Please enter your API key first'); return; }
+  
+  const topic = TOPIC_INFO[selectedPracticeTopic]?.name || selectedPracticeTopic;
+  const container = document.getElementById('practiceContainer');
+  container.innerHTML = `<div class="loading-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><p style="text-align:center;color:var(--muted);margin-top:8px">Generating AI questions for ${topic}...</p>`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: `Generate 5 multiple choice English grammar questions testing "${topic}". 
+Format as JSON array. Each question: {"text": "...", "opts": ["a","b","c","d"], "ans": INDEX, "exp": "short explanation"}
+The questions should be similar level to: digital pioneers initiative English exam.
+Return ONLY the JSON array, no markdown.`
+        }]
+      })
+    });
+
+    const data = await response.json();
+    if (data.error) throw new Error(data.error.message);
+    
+    const text = data.content[0].text;
+    const parsed = JSON.parse(text.replace(/```json|```/g,'').trim());
+    practiceQuestions = parsed;
+    practiceAnswers = {};
+    practiceSubmitted = false;
+    renderPracticeQuiz(practiceQuestions, true);
+    showToast('✓ AI questions generated!');
+  } catch (err) {
+    container.innerHTML = `<div class="card" style="text-align:center;padding:30px">
+      <div style="font-size:2rem;margin-bottom:12px">⚠️</div>
+      <p style="color:var(--error);margin-bottom:12px">Error: ${err.message}</p>
+      <button class="btn-outline btn-sm" onclick="startPracticePrebuilt()">Use Pre-built Questions</button>
+    </div>`;
+  }
+}
+
+// ═══════════════════════════════════════
+//  UTILITIES
+// ═══════════════════════════════════════
+function shuffle(arr) {
+  for (let i = arr.length-1; i > 0; i--) {
+    const j = Math.random()*(i+1)|0;
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ═══════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  initPractice();
+});
+</script>
+</body>
+</html>
