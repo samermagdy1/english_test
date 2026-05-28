@@ -69,9 +69,19 @@ section{min-height:100vh;padding:80px 20px 40px}.section-hidden{display:none!imp
 .q-option{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;user-select:none}
 .q-option:hover{border-color:var(--teal);background:rgba(0,212,194,0.06)}
 .q-option.selected{border-color:var(--teal);background:rgba(0,212,194,0.1);color:var(--teal)}
+.q-option.opt-correct{border-color:var(--success)!important;background:rgba(61,214,140,0.15)!important;color:var(--success)!important;pointer-events:none}
+.q-option.opt-wrong{border-color:var(--error)!important;background:rgba(255,107,107,0.15)!important;color:var(--error)!important;pointer-events:none}
+.q-option.opt-locked{pointer-events:none;opacity:.6}
+.q-option.opt-correct .opt-letter{background:var(--success)!important;color:#fff!important}
+.q-option.opt-wrong .opt-letter{background:var(--error)!important;color:#fff!important}
 .q-option label{cursor:pointer;font-size:.95rem;font-weight:500;flex:1}
 .opt-letter{width:24px;height:24px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:var(--muted);flex-shrink:0}
 .q-option.selected .opt-letter{background:var(--teal);color:var(--bg)}
+.q-answer-exp{margin-top:14px;background:rgba(0,212,194,0.06);border-left:3px solid var(--teal);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.88rem;color:var(--muted);line-height:1.6;animation:fadeUp .3s ease}
+.q-answer-exp strong{color:var(--teal)}
+.q-answer-exp .exp-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.q-answer-exp .exp-label.correct{color:var(--success)}
+.q-answer-exp .exp-label.wrong{color:var(--error)}
 .test-nav{max-width:900px;margin:28px auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .answered-count{color:var(--muted);font-size:.9rem}.answered-count strong{color:var(--white)}
 #results{padding-top:90px}.results-wrap{max-width:900px;margin:0 auto}
@@ -1700,27 +1710,65 @@ function renderTest() {
 function renderQuestionCard(q, displayNum) {
   const letters = ['A','B','C','D'];
   const userAns = state.userAnswers[q.id];
+  const isAnswered = userAns !== undefined;
+  const isCorrect = isAnswered && userAns === q.ans;
   const opts = q.opts.map((opt, i) => {
-    const sel = userAns === i ? 'selected' : '';
-    return `<label class="q-option ${sel}" onclick="selectOption(${q.id}, ${i}, this)">
-      <div class="opt-letter">${letters[i]}</div>
-      <label>${opt}</label>
-    </label>`;
+    let cls = 'q-option';
+    let onclick = 'onclick="selectOption(' + q.id + ', ' + i + ', this)"';
+    if (isAnswered) {
+      onclick = '';
+      if (i === q.ans) cls += ' opt-correct';
+      else if (i === userAns) cls += ' opt-wrong';
+      else cls += ' opt-locked';
+    }
+    return '<label class="' + cls + '" ' + onclick + '><div class="opt-letter">' + letters[i] + '</div><label>' + opt + '</label></label>';
   }).join('');
-  const answered = userAns !== undefined ? 'answered' : '';
-  return `<div class="q-card ${answered}" id="qcard-${q.id}">
-    <div class="q-num">Question ${displayNum}</div>
-    <div class="q-text">${q.text}</div>
-    <div class="q-options">${opts}</div>
-  </div>`;
+  let expHtml = '';
+  if (isAnswered) {
+    const labelClass = isCorrect ? 'correct' : 'wrong';
+    const labelText = isCorrect ? '✅ Correct!' : '❌ Wrong — Correct: ' + q.opts[q.ans];
+    expHtml = '<div class="q-answer-exp"><div class="exp-label ' + labelClass + '">' + labelText + '</div>' + q.exp + '</div>';
+  }
+  const answered = isAnswered ? 'answered' : '';
+  return '<div class="q-card ' + answered + '" id="qcard-' + q.id + '"><div class="q-num">Question ' + displayNum + '</div><div class="q-text">' + q.text + '</div><div class="q-options">' + opts + '</div>' + expHtml + '</div>';
 }
 
 function selectOption(qId, idx, el) {
+  // Find the question object
+  const q = state.questions.find(x => x.id === qId);
+  if (!q) return;
   state.userAnswers[qId] = idx;
   const card = document.getElementById('qcard-' + qId);
-  card.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
+  const isCorrect = idx === q.ans;
+
+  // Color-code all options and lock them
+  const allOpts = card.querySelectorAll('.q-option');
+  allOpts.forEach((opt, i) => {
+    opt.onclick = null;
+    opt.style.cursor = 'default';
+    if (i === q.ans) {
+      opt.className = 'q-option opt-correct';
+    } else if (i === idx && !isCorrect) {
+      opt.className = 'q-option opt-wrong';
+    } else {
+      opt.className = 'q-option opt-locked';
+    }
+  });
+
   card.classList.add('answered');
+
+  // Remove existing explanation if any
+  const existing = card.querySelector('.q-answer-exp');
+  if (existing) existing.remove();
+
+  // Show explanation
+  const labelClass = isCorrect ? 'correct' : 'wrong';
+  const labelText = isCorrect ? '✅ Correct!' : '❌ Wrong — Correct: ' + q.opts[q.ans];
+  const expDiv = document.createElement('div');
+  expDiv.className = 'q-answer-exp';
+  expDiv.innerHTML = '<div class="exp-label ' + labelClass + '">' + labelText + '</div>' + q.exp;
+  card.appendChild(expDiv);
+
   updateAnsweredCountFromState();
   updateProgress();
   if (state.isFullTest) saveProgress();
